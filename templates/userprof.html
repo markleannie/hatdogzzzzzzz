@@ -1,0 +1,225 @@
+{% block css %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<link rel="icon" type="image/jpg" href="/static/images/systemicon.png">
+<link rel="stylesheet" href="/static/style.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+
+    .main-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        padding: 20px;
+    }
+
+    .container-profile-info {
+        width: 65%;
+        border: 2px solid #b98b1d;
+        border-radius: 12px;
+        padding: 20px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-profile-info img.usr {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .container-profile-info p {
+        width: 100%;
+        margin: 5px 0;
+        padding: 10px;
+        background-color: #b98b1d;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .container-profile-info p.paragraph-usr {
+        background-color: transparent;
+        font-weight: bold;
+        text-align: center;
+        font-size: 18px;
+        color: #2c2c2c;
+    }
+
+    .container-professional-details {
+        width: 65%;
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .edit-profile-row {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .edit-profile-button {
+        background-color: #2c2c2c;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .edit-profile-button:hover {
+        background-color: #4a4a4a;
+    }
+
+    .second-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .second-row img {
+        width: 300px;
+        height: auto;
+        margin-bottom: 10px;
+        border-radius: 30px;
+        transition: transform 0.3s ease;
+    }
+
+    .second-row img:hover {
+        transform: scale(1.05);
+    }
+
+    .second-row .action-button {
+        width: 80%;
+        background-color: #b98b1d;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .second-row .action-button:hover {
+        background-color: #d9a737;
+        transform: scale(1.05);
+    }
+
+    .information-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .information-row div {
+        padding: 10px;
+        border: 2px solid #b98b1d;
+        border-radius: 10px;
+        background-color: #f8f8f8;
+        font-size: 14px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .information-row div:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .information-row div p {
+        margin: 0;
+        text-align: center;
+        color: #2c2c2c;
+    }
+</style>
+{% endblock css %}
+
+{% block title %}
+<title>Profile</title>
+{% endblock title %}
+
+{% block body %}
+<body>
+    <div class="main-content">
+
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="/static/images/sysicon.png" alt="Logo">
+                <div class="logo-text">
+                    LNU Room Management <span>System</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('bookings') }}"><strong>BOOKING</strong></a></li>
+                <li><a href="{{ url_for('buildings') }}"><strong>BUILDING</strong></a></li>
+                <li><a href="{{ url_for('rooms') }}"><strong>ROOMS</strong></a></li>
+            </ul>
+        </nav>
+
+
+        <div class="container-profile-info">
+            <img src="/static/images/usr.png" alt="" class="usr">
+            <p class="paragraph-usr">{{ current_user.username }}</p>
+
+            <div class="paragraph">
+                <p><strong>Title:</strong> {{ current_user.title | title }}</p>
+                <p><strong>Department:</strong> {{ current_user.department | title }}</p>
+                <p><strong>Email:</strong> {{ current_user.email }}</p>
+                <p><strong>Contact Number:</strong> {{ current_user.contact_number }}</p>
+                <p><strong>Office Hours:</strong> {{ current_user.office_hours | title }}</p>
+                <p><strong>Age:</strong> {{ current_user.age }}</p>
+                <p><strong>Birthday:</strong> {{ current_user.birthday }}</p>
+                <p><strong>Address:</strong> {{ current_user.address | title }}</p>
+            </div>
+        </div>
+
+        <div class="container-professional-details">
+            <div class="edit-profile-row">
+                <button class="edit-profile-button" onclick="window.location.href='/editprofile'">Edit Profile</button>
+            </div>
+
+            <div class="second-row">
+                <img src="/static/images/prof.png" alt="" class="illus3">
+                <button class="action-button" onclick="window.location.href='/dashboard'">Visit Dashboard</button>
+                <button class="action-button" onclick="window.location.href='/bookings'">Book a Room</button>
+            </div>
+
+            <div class="information-row">
+                <div>
+                    <p>Designation / Rank</p>
+                </div>
+                <div>
+                    <p>Specialization / Expertise</p>
+                </div>
+                <div>
+                    <p>Course/s Taught</p>
+                </div>
+                <div>
+                    <p>Publications / Research</p>
+                </div>
+            </div>
+        </div>
+        <div class="glow-button">
+            {% if current_user.is_authenticated %}
+                <a href="/logout" style="color: inherit; text-decoration: none;">Logout</a>
+            {% else %}
+                <a href="/login" style="color: inherit; text-decoration: none;">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+{% endblock body %}

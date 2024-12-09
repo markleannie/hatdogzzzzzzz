@@ -1,0 +1,81 @@
+{% block css %}
+<link rel="icon" type="image/jpg" href="/static/images/systemicon.png">
+<link rel="stylesheet" href="/static/style.css">
+{% endblock css %}
+
+{% block title %}
+<title>LMRS | Rooms</title>
+{% endblock title %}
+
+{% block body %}
+<body>
+    <div class="main-content">
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="/static/images/sysicon.png" alt="Logo">
+                <div class="logo-text">
+                    LNU Room Management <span>System</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('bookings') }}"><strong>BOOKING</strong></a></li>
+                <li><a href="{{ url_for('buildings') }}"><strong>BUILDING</strong></a></li>
+                <li><a href="{{ url_for('rooms') }}"><strong>ROOMS</strong></a></li>
+            </ul>
+            <div class="icon-img">
+                <a href="{{ url_for('userprof') }}">
+                    <img src="/static/images/user.png" class="icon-img" alt="Icon" style="width: 20px; height: 20px;">
+                </a>
+            </div>
+        </nav>
+        <!-- Search form for rooms -->
+        <form method="GET" action="{{ url_for('rooms') }}" id="search-form">
+            <input type="text" name="room_name" placeholder="Search for a room..." value="{{ request.args.get('room_name', '') }}">
+            <button type="submit">Search</button>
+        </form>
+        
+
+        <!-- List of rooms -->
+        <div id="room-list">
+            {% if rooms %}
+                <ul id="room-results">
+                    {% for room in rooms %}
+                        <li class="room-item" data-room-id="{{ room.room_name }}" onclick="showRoomDetails('{{ room.room_name }}', '{{ room.building }}', '{{ room.capacity }}')">
+                            {{ room.room_name }}  <!-- Only room_name shown initially -->
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p id="no-rooms-message">No rooms found.</p>
+            {% endif %}
+        </div>
+
+        <div id="room-details" style="display:none;">
+            <h3 id="room-name"></h3>
+            <p id="room-building"></p>
+            <p id="room-capacity"></p>
+        </div>
+
+        
+    </div>  
+    <footer>
+        <p>&copy; 2024 LNU Room Management. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showRoomDetails(roomName, building, capacity) {
+    // Hide the room list
+    document.getElementById("room-list").style.display = "none";
+    
+    // Show the room details
+    document.getElementById("room-details").style.display = "block";
+    
+    // Set the room details in the div
+    document.getElementById("room-name").textContent = roomName;
+    document.getElementById("room-building").textContent = "Building: " + building;
+    document.getElementById("room-capacity").textContent = "Capacity: " + capacity;
+}
+
+    </script>
+</body>
+{% endblock body %}

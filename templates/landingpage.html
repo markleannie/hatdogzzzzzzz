@@ -1,0 +1,275 @@
+{% block css %}
+<link rel="stylesheet" href="/static/style.css">
+<style>
+/* General Body Styling */
+body {
+    margin: 0;
+    background: url('/static/images/lgpg2.png') no-repeat center center fixed;
+    background-size: contain; 
+    background-position: 123px center;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Main Container */
+.landing-container {
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    padding: 20px;
+    animation: 1s ease-out;
+}
+
+/* Logo Section */
+.logo {
+    display: flex;
+    align-items: center;
+    position: fixed; /* Ensures it stays at the top-left corner */
+    top: 90px; /* Adjust vertical spacing */
+    left: 150px; /* Adjust horizontal spacing */
+    gap: 10px; /* Keep the gap between logo image and text */
+}
+
+.logo img {
+    width: 50px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #2c2c2c;
+    display: flex;
+    flex-direction: column; /* Stacks the text vertically */
+    align-items: flex-start; /* Aligns text to the left */
+}
+
+.logo-text span {
+    color: #d4af37; /* Gold accent */
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    position: fixed;
+    top: 90px; /* Move it lower to align with the logo */
+    right: 100px; /* Add spacing from the right side to match the left positioning of the logo */
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000; /* Ensures it is above other elements */
+    color: black; /* Change color to black for better visibility */
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    transform: scale(1.1); /* Slightly enlarge the hamburger on hover */
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    display: none; /* Initially hidden */
+    z-index: 999;
+    padding: 20px;
+    text-align: center;
+    animation: fadeInDown 1s ease-out;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #d4af37;
+}
+
+/* Show navbar when active */
+.navbar.active {
+    display: block;
+}
+
+/* Main Content */
+.main-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c2c2c;
+    margin: 100px 0 10px; /* Increase the top margin to push it lower */
+    line-height: 1.5;
+    position: relative;
+    top: 200px; /* Moves the text further down */
+    left: 30px; /* Moves the text to the right */
+    opacity: 0;
+    animation: fadeInLeft 1.5s ease-out forwards;
+}
+
+.sub-text {
+    font-size: 16px;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 60px; /* Increase bottom margin for better spacing */
+    position: relative;
+    top: 200px; /* Matches the main-text movement */
+    left: 30px; /* Moves the sub-text to the right, same as main-text */
+    opacity: 0;
+    animation: fadeInRight 1.5s ease-out forwards;
+}
+
+/* Buttons Section */
+.buttons {
+    position: relative; /* Changed from absolute to relative */
+    left: 50px;
+    bottom: -70px; /* Increased this value to move buttons lower */
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Add space between buttons */
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+
+
+button {
+    border: 2px solid #d4af37;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    width: 150px; /* Ensure consistent button width */
+    text-align: center; /* Center text inside the buttons */
+    transform: scale(1);
+}
+
+button.login {
+    background-color: white;
+    color: #d4af37;
+}
+
+button.login:hover {
+    background-color: #d4af37;
+    color: white;
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+button.signup {
+    background-color: #d4af37;
+    color: white;
+    bottom: -100px;
+}
+
+button.signup:hover {
+    background-color: white;
+    color: #d4af37;
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+/* For decorative stars */
+.stars {
+    font-size: 18px;
+    left: 5%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+
+
+@keyframes slideUp {
+    100% { transform: translateY(70px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+</style>
+{% endblock css %}
+
+{% block title %}
+<title>LMRS</title>
+{% endblock title %}
+
+{% block body %}
+<div class="landing-container">
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu" onclick="toggleNav()">
+        &#9776;
+    </div>
+
+    <!-- Logo Section -->
+    <div class="logo">
+        <img src="/static/images/sysicon.png" alt="Logo">
+        <div class="logo-text">
+            LNU Room Management <span>System</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <h1 class="main-text">Simple, modern, <br>efficient booking.</h1>
+    <p class="sub-text">"Book a room for <br>this semester now!"</p>
+
+    <!-- Navigation Bar -->
+    <div id="navbar" class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="buttons">
+        <div class="buttons">
+            <button class="login" onclick="window.location.href='/login'">Login</button>
+            <button class="signup" onclick="window.location.href='/signup'">Signup</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleNav() {
+        var navbar = document.getElementById("navbar");
+        navbar.classList.toggle("active");
+    }
+</script>
+
+{% endblock body %}

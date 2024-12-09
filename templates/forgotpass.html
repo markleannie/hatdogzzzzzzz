@@ -1,0 +1,214 @@
+  {% block css %}
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+    
+    body {
+      background-color: #002b36; /* Background image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Lexend', serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(255, 255, 255);
+    }
+
+    .flex-container {
+      display: flex;
+      background-color: #002b36;
+      border-radius: 10px;
+      box-shadow: 0px 0px 1px #b88917;
+      width: 75%; /* Reduced width */
+      max-width: 1200px; /* Set max width */
+      overflow: hidden;
+    }
+
+    .image-side {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+      border-radius: 10px;
+      margin: 10px;
+      box-shadow: 0px 0px 6px #b88917;
+    }
+
+    .slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ensure images are cropped */
+  }
+
+  .slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without stretching */
+    position: absolute;
+    top: 0;
+    left: 100%;
+    opacity: 0;
+    transition: all 1s ease;
+  }
+
+    .slider img.active {
+      left: 0;
+      opacity: 1;
+    }
+
+    .form-side {
+    flex: 1;
+    padding: 90px; /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #002b36;
+  }
+
+
+    .form-group label {
+      font-size: 14px;
+    }
+
+    .form-control {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 7px;
+      border: 2px solid #b88817c5;
+      border-radius: 10px;
+      background-color: #002b36;
+      color: white;
+    }
+
+    .custom-btn {
+      background-color: #b88917;
+      border: none;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 5px;
+      box-shadow: 0 0 15px #002b3694;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 20px;
+      width: 100%;
+      font-family: 'Lexend', serif;
+    }
+
+    .custom-btn:hover {
+      background-color: #002b3694;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    }
+
+    .login-text, a, p {
+      color: wheat;
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 3px;
+      font-size: 12px;
+    }
+
+    a:hover {
+      color: #b88917;
+    }
+
+    .logo {
+      width: 70px; /* Adjust the width as desired */
+      height: auto; /* Maintain aspect ratio */
+      margin: 0px; /* Space between logo and other elements */
+  }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+      .flex-container {
+        flex-direction: column;
+        width: 90%;
+        max-width: none;
+      }
+
+      .form-side {
+        padding: 20px;
+      }
+    }
+
+
+    footer {
+      width: 100%;
+      margin-bottom: 10px;
+      text-align: center;
+      padding: 0px;
+      background-color: #002b36; /* Adjust to match the theme */
+      color: wheat;
+      position: absolute;
+      bottom: 0;
+    }
+  </style>
+  {% endblock css %}
+
+  {% block title %}
+  <title>Reset Your Password</title>
+  {% endblock title %}
+
+  {% block body %}
+  <body>
+    <div class="flex-container">
+      <div class="image-side">
+        <div class="slider">
+          <img src="/static/images/lnu5.jpg" alt="Slide 1" class="slide">
+          <img src="/static/images/lnu6.jpg" alt="Slide 2" class="slide">
+          <img src="/static/images/lnu7.jpg" alt="Slide 3" class="slide">
+        </div>    
+      </div>
+      <div class="form-side">
+        <img src="/static/images/sysicon.png" alt="lmrslogo" class="logo">
+        <h1 class="login-text">Input Your Email</h1><br>
+
+        <form action="/forgotpass" method="POST">
+          <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <button type="submit" class="custom-btn">Send Reset Link</button>
+      </form>
+      
+      
+      </div>
+      
+    </div>
+    
+
+    <script>
+      let currentIndex = 0;
+      const slides = document.querySelectorAll('.slider img');
+      const totalSlides = slides.length;
+
+      function changeSlide() {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % totalSlides;
+        slides[currentIndex].classList.add('active');
+      }
+
+      setInterval(changeSlide, 4000); // Change slide every 3 seconds
+      changeSlide(); // Show the first slide initially
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const closeButtons = document.querySelectorAll('.close');
+      closeButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+          e.target.closest('.alert').style.display = 'none';
+        });
+      });
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2024 LNU Room Management. All rights reserved.</p>
+  </footer>
+
+  </body>
+  {% endblock body %}

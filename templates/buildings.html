@@ -1,0 +1,120 @@
+{% block css %}
+<link rel="stylesheet" href="/static/style.css">
+{% endblock css %}
+
+{% block title %}
+<title>LMRS | Buildings</title>
+{% endblock title %}
+
+{% block body %}
+<body> 
+
+    <div class="main-content">
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="/static/images/sysicon.png" alt="Logo">
+                <div class="logo-text">
+                    LNU Room Management <span>System</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('bookings') }}"><strong>BOOKING</strong></a></li>
+                <li><a href="{{ url_for('buildings') }}"><strong>BUILDING</strong></a></li>
+                <li><a href="{{ url_for('rooms') }}"><strong>ROOMS</strong></a></li>
+            </ul>
+            <div class="icon-img">
+                <a href="{{ url_for('userprof') }}">
+                    <img src="/static/images/user.png" class="icon-img" alt="Icon" style="width: 20px; height: 20px;">
+                </a>
+            </div>
+        </nav>
+
+    
+        <div class="welcome-box">
+            <h1>Explore Our Buildings</h1>
+            <p class="p-buildings">Discover the unique features and facilities of each building in our campus.</p>
+        </div>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <a href="/building/1">
+                    <img src="{{ url_for('static', filename='images/lnu1.jpg') }}" alt="Building 1">
+                </a>
+                <h5>Conversion Building</h5>
+                <p class="p-buildings">
+                    Recreation Center promotes a healthy 
+                    lifestyle and offers students a chance to unwind and 
+                    connect with peers. Join us for an active day filled 
+                    with fun and fitness!
+                </p>
+            </div>
+            <div class="gallery-item">
+                <a href="/building/2">
+                    <img src="{{ url_for('static', filename='images/lnu2.jpg') }}" alt="Building 2">
+                </a>
+                <h5>IT Building</h5>
+                <p class="p-buildings">
+                    Welcome to the Innovation Center, a state-of-the-art facility designed to 
+                    foster creativity and collaboration among students 
+                    and faculty.
+                </p>
+            </div>
+            <div class="gallery-item">
+                <a href="/building/3">
+                    <img src="{{ url_for('static', filename='images/lnu3.jpg') }}" alt="Building 3">
+                </a>
+                <h5>College Building</h5>
+                <p class="p-buildings">
+                    With numerous fitness classes and 
+                    social events, the Recreation Center promotes a healthy 
+                    lifestyle and offers students a chance to unwind and 
+                    connect with peers. Join us for an active day filled 
+                    with fun and fitness!
+                </p>
+            </div>
+            <div class="gallery-item">
+                <a href="/building/4">
+                    <img src="{{ url_for('static', filename='images/lnu4.jpg') }}" alt="Building 1">
+                </a>
+                <h5>Conversion Building</h5>
+                <p class="p-buildings">
+                    Experience the vibrant atmosphere of the Student Recreation 
+                    Center, where wellness and community come together. This 
+                    dynamic facility boasts a fully equipped gym, swimming 
+                    pool, and a variety of sports courts for basketball, 
+                    volleyball, and more. 
+                </p>
+            </div>
+            <div class="gallery-item">
+                <a href="/building/5">
+                    <img src="{{ url_for('static', filename='images/lnu6.jpg') }}" alt="Building 2">
+                </a>
+                <h5>IT Building</h5>
+                <p class="p-buildings"> 
+                    With its sustainable design and eco-friendly materials, 
+                    the Innovation Center is committed to creating an
+                    inspiring environment that encourages innovative 
+                    thinking and academic excellence.
+                </p>
+            </div>
+            <div class="gallery-item">
+                <a href="/building/6">
+                    <img src="{{ url_for('static', filename='images/lnu7.jpg') }}" alt="Building 3">
+                </a>
+                <h5>College Building</h5>
+                <p class="p-buildings">
+                    Discover the Heritage Library, a beautifully 
+                    preserved historic building that serves as a hub 
+                    for knowledge and research.
+                </p>
+            </div>
+        </div>
+        
+        
+    </div> 
+    
+    <footer>
+        <p>&copy; 2024 LNU Room Management. All rights reserved.</p>
+    </footer> 
+</body>
+{% endblock body %}

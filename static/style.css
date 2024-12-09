@@ -1,0 +1,913 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+/* BASE.HTML INITIAL DESIGN */
+
+html, body {
+    height: 100%;  /* Ensure the body takes up full height of the viewport */
+    margin: 0;     /* Remove default margin */
+    padding: 0;    /* Remove default padding */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: #ffffff; /* Dark base color */
+    font-family: 'Lexend', sans-serif;
+}
+
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Adds spacing between sections */
+    padding: 50px;
+}
+
+.container {
+    display: flex; /* Create a flex container */
+    max-width: 1200px; /* Limit the width of the container */
+    gap: 1rem; /* Space between the left and right columns */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin: 2rem;
+    padding-right: 9.5rem;
+    gap: 10px; /* Keep the gap between logo image and text */
+}
+
+
+.logo img {
+    width: 50px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #2c2c2c;
+    display: flex;
+    flex-direction: column; /* Stacks the text vertically */
+    align-items: flex-start; /* Aligns text to the left */
+}
+
+.logo-text span {
+    color: #b98b1d; /* Change the text color to red */
+}
+
+
+.left-column {
+    flex: 1; /* Take one portion of the available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-column {
+    flex: 2; /* Take twice the space of the left column */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between hero and section2 */
+    justify-content: flex-start;
+}
+
+.hero {
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; /* Full width of the right column */
+}
+
+.hero h1 {
+    font-family: 'Times New Roman', serif; /* Change to Times New Roman */
+    font-size: 4rem; /* Make it larger */
+    color: #333; /* Adjust color */
+    margin: 0; /* Optional: Remove any default margin */
+}
+
+
+.hero p {
+    font-size: 19px;
+    color: #555; /* Adjust color */
+    font-family: 'Roboto', sans-serif;
+}
+
+.base1 {
+    max-width: 500px; /* Restrict maximum width */
+    height: auto;
+    margin-left: 0px; /* Add spacing on the left side */
+}
+
+.base2 {
+    max-width: 400px; /* Restrict maximum width */
+    width: 100%; /* Make it responsive */
+    height: auto;
+    bottom: 1rem;
+}
+
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    top: 90px;
+    gap: 50px;
+}
+
+
+.icon-img {
+    margin-left: 30px;
+}
+
+.glow-button a {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: 2px solid #2c2c2c; /* Bold outline with specified color */
+    border-radius: 50px; /* Rounded corners */
+    color: #2c2c2c; /* Text color */
+    text-transform: uppercase;
+    font-weight: bold; /* Bold text */
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: transparent; /* No color inside */
+}
+
+/* Glowing hover effect */
+.glow-button a:hover {
+    color: #2c2c2c; /* Change text color on hover */
+    background-color: #b98b1d; /* Add background glow */
+    box-shadow: 0 0 20px #b98b1d, 0 0 40px #b98b1d, 0 0 60px #b98b1d; /* Glow effect */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+/* Adjust positioning */
+.glow-button {
+    margin-top: 20px; /* Add spacing from other elements */
+    text-align: center; /* Center the button */
+}
+
+footer { 
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: #b98b1d; /* Footer background color */
+    padding: 50px 0; /* Adjust padding inside the footer */
+    width: 100%; /* Ensure footer spans the full width */
+    position: relative; /* Allows the footer to stay in its natural position */
+    bottom: 0; /* Keeps the footer at the bottom */
+    margin: 0; /* Ensures there's no extra margin */
+    border-radius: 0; /* Remove rounded corners */
+}
+
+
+footer p {
+    color: #fff; 
+}
+
+.illus2 {
+    width: 80%;              /* Set the width of the image */
+    display: block;          /* Make the image a block-level element */
+    margin-left: auto;       /* Automatically adjust the left margin */
+    margin-right: auto;      /* Automatically adjust the right margin */
+    border-radius: 10px;     /* Round the corners of the image */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Apply box shadow */
+}
+
+
+
+/* BOOKINGS.HTML INITIAL DESIGN */
+.icons-section {
+    display: flex;                /* Apply flexbox layout */
+    align-items: center;          /* Vertically center the items */
+    gap: 10px;                    /* Adds spacing between the icons */
+}
+
+.arrow-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.fillform {
+    font-family: "Roboto", sans-serif;
+    color: #2c2c2c;
+    text-align: center;  /* Center the text horizontally */
+    margin: 0;  /* Remove any default margin */
+    border: 3px solid #b98b1d;  /* Border color */
+    background-color: #b98b1d;  /* Add the background color */
+    padding: 11px;  /* Optional: Add padding to give space between text and border */
+    padding-left: 170px;
+    padding-right: 170px;
+    margin-right: 5rem;
+    margin-left: 5rem;
+    color: white;
+    border-radius: 50px;
+}
+
+
+
+.booking-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.booknow {
+    font-family: "Roboto", sans-serif;
+    color: #2c2c2c;
+    margin-left: 10px;             /* Adjust spacing if needed */
+}
+
+/* Ensure the container for the form uses flexbox */
+.form-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping if there's not enough space */
+    justify-content: center; /* Center the content horizontally */
+    gap: 20px; /* Adds space between the two containers */
+}
+
+/* Align the label and input side by side using flexbox */
+.form-group {
+    display: flex;
+    align-items: center;  /* Vertically align the label and input */
+    width: 100%;  /* Ensure the form group takes full width */
+    margin-bottom: 20px; /* Adds space between form fields */
+}
+
+/* Style the label */
+.form-group label {
+    flex: 1;  /* Allow the label to take up the necessary space */
+    margin-right: 10px;  /* Adds space between the label and input */
+    font-weight: bold;
+}
+
+.note {
+    margin-bottom: 40px;
+}
+
+/* Style the input to sit next to the label */
+.form-group .form-control, 
+.form-group select, 
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    height: 39px;  /* Set height to 39px to match the smaller section height */
+    box-sizing: border-box;  /* Include padding and border in width calculation */
+}
+
+/* Ensure the container for the form uses flexbox */
+.form-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping if there's not enough space */
+    justify-content: center; /* Center the content horizontally */
+    gap: 20px; /* Adds space between the two containers */
+}
+
+/* Ensure consistent width of form-group */
+.form-group {
+    width: 100%;  /* Ensure each form group takes full width */
+    margin-bottom: 20px; /* Adds space between form fields */
+}
+
+/* Style each container so they sit next to each other */
+.container-booking-1 {
+    flex: 1; /* Both containers take equal width */
+    min-width: 300px; /* Minimum width to prevent too narrow columns */
+    max-width: 500px; /* Limit the maximum width */
+    margin-right: 10px;
+    padding: 80px; /* Add padding inside the container to create space between the border and the content */
+}
+
+.container-border {
+    border: 3px solid #b98b1d; /* Apply a solid border with the specified color */
+    border-radius: 20px;
+}
+
+/* Apply consistent width and height to form group elements */
+.booking-form {
+    max-width: 800px; /* Limit max width for the form */
+    margin: auto; /* Center the form horizontally */
+}
+
+/* Custom styling for the form container to prevent it from being too wide */
+.custom-card {
+    background-color: rgba(0, 43, 54, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Make the form scrollable if needed */
+.booking-form {
+    overflow-y: auto;  /* Allows vertical scrolling */
+    max-height: 500px;  /* Adjust this value based on your design */
+    border: #002b36;
+    border-radius: 5px;
+}
+
+
+
+
+/* Sidebar Styling */
+
+li, ul {
+    color: #283335;
+}
+
+a {
+    color: rgb(67, 100, 138);
+    text-decoration: none;
+}
+
+
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+    .sidebar .menu-item {
+        justify-content: center;
+    }
+    .sidebar .menu-item span {
+        display: none;
+    }
+    .main-content {
+        margin-left: 30%; /* Adjust for smaller sidebar */
+    }
+}
+
+
+
+
+
+/* General Styling for the Bookings Page */
+
+.text-center.booking-title{
+    margin-left: 50px;
+}
+
+/* Title Styling */
+.booking-title {
+    font-size: 2.5rem;
+    color: #b88917;
+    text-shadow: 0 0 8px rgba(15, 13, 3, 0.411);
+    margin-bottom: 40px;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.progress-indicator li {
+    margin: 0 15px;
+    font-size: 1.2rem;
+    color: #ffd700;
+    position: relative;
+}
+
+.progress-indicator li::after {
+    content: '>';
+    position: absolute;
+    right: -20px;
+    top: 0;
+    color: #b88917;
+}
+
+.progress-indicator li:last-child::after {
+    display: none;
+}
+
+.progress-indicator li.active {
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+}
+
+/* Form Styling */
+
+.form-title {
+    color: #ffd700;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+/* Glowing Button */
+.custom-btn {
+    background-color: #b88917;
+    border: none;
+    padding: 12px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    
+}
+
+.custom-btn:hover {
+    background-color: #ffd700;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+}
+
+/* Carousel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+/* Available Rooms Section */
+.custom-link-contact, .custom-link-about {
+    color: #b88917;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.custom-link-about{
+    margin-bottom: 10px;
+}
+
+.custom-link-contact:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
+.custom-link-about:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
+.available-rooms .list-group-item {
+    background-color: transparent;
+    color: #b88917;
+    border: none;
+    text-align: center;
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+.available-rooms .list-group-item:hover {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+/* Modal Styling */
+.modal-content {
+    background-color: #073642;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.modal-header, .modal-footer {
+    border: none;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #555;
+}
+
+/* Ensuring the booking form and available rooms card are side by side */
+.row {
+    display: flex;
+    justify-content: space-between; /* Adjust space between form and available rooms */
+    gap: 20px; /* Spacing between the two columns */
+}
+
+.booking-form-column, .available-rooms-column {
+    flex: 1; /* Allows both columns to take up equal space */
+    max-width: 50%; /* Ensures that both columns have a similar width but leave some spacing */
+    padding: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Stacks the columns on top of each other on smaller screens */
+    }
+    .booking-form-column, .available-rooms-column {
+        max-width: 100%; /* On smaller screens, both columns take up full width */
+    }
+}
+
+.card-img-top.img-fluid {
+    width: 100%; /* Ensure image is responsive */
+    height: auto; /* Keep aspect ratio */
+}
+
+
+.form-control {
+    width: 100%; /* Each input takes full width of the group */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+    padding: 10px; /* Consistent padding for all inputs */
+    border: 2px solid #b88917; /* Your border styles */
+    border-radius: 10px; /* Your border radius */
+}
+
+.container {
+	padding: 2rem;
+}
+
+.slider-wrapper {
+	position: relative;
+	max-width: 48rem;
+	margin: 0 auto;
+}
+
+.slider{
+    display: flex;
+    aspect-ratio: 16/9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    border-radius: 0.5rem;
+}
+
+.slider img{
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+    }
+    
+.slider-nav {
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translate(-50%);	
+    z-index: 1;
+}
+    
+.slider-nav a {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+}
+    
+.slider-nav a:hover {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+.welcome-box {
+    width: 50%;
+    border: 2px solid #b98b1d;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    background-color: #2c2c2c;
+    text-align: center;
+}
+
+.welcome-box h1 {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    margin-top: 1px;
+}
+
+.nav-links {
+    list-style: none; /* Remove default list styles */
+    display: flex; /* Use flexbox for horizontal layout */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.nav-links li {
+    font-size: 15px;
+}
+
+.nav-links li a {
+    color: #283335; /* Link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth color transition */
+    margin-left: 30px; /* Space between items */
+    margin-right: 10px;
+}
+
+.nav-links li a:hover {
+    color: #b88917; /* Change color on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column; /* Stack links vertically */
+        align-items: flex-start; /* Align links to the left */
+        width: 100%; /* Full width */
+        display: none; /* Hide links by default */
+        
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    nav {
+        flex-direction: column; /* Stack logo and nav links vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .nav-toggle {
+        display: block; /* Show hamburger icon on smaller screens */
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+    .nav-toggle img {
+        height: 30px; /* Size of hamburger icon */
+    }
+
+    .nav-links li {
+        margin: 10px 0; /* Space between items when stacked */
+    }
+}
+
+
+
+
+
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create responsive grid */
+    gap: 20px; /* Space between items */
+    margin: 20px auto; /* Add vertical margin and center horizontally */
+    max-width: 1000px; /* Restrict the maximum width */
+    padding: 20px; /* Add padding for left and right spacing */
+    width: 100%; /* Allow the container to shrink */
+}
+
+.gallery-item {
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for item */
+    border-radius: 15px;
+    border: 2px solid #2c2c2c;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Ensure items stack vertically */
+    justify-content: space-between; /* Distribute space evenly */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.gallery-item img {
+    width: 100%; /* Responsive image */
+    height: 200px; /* Fixed height for equal size */
+    object-fit: cover; /* Cover the area without stretching */
+}
+
+.gallery-item h5 {
+    font-size: 20px;
+    color: #002b36; /* Dark text color */
+    margin: 10px 15px;
+}
+
+.gallery-item p {
+    color: #555; /* Grey text for descriptions */
+    padding: 0 15px 15px; /* Padding for better spacing */
+}
+
+.p-buildings {
+    color: #002b36;
+    font-size: 15px;
+}
+
+
+.room-gallery {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between; /* Distribute items evenly */
+    margin-top: 20px; /* Spacing above the gallery */
+}
+
+.room-item {
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for room items */
+    border-radius: 8px; /* Slightly rounded corners */
+    margin: 10px; /* Spacing between room items */
+    padding-left: 26rem;
+    padding-right: 26rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    flex: 1 1 calc(45% - 20px); /* Responsive item width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    transition: transform 0.3s; /* Smooth scaling on hover */
+    border: 3px solid #b98b1d;
+}
+
+li.room-item {
+    list-style-type: none;
+}
+
+.room-item:hover {
+    transform: scale(1.02); /* Scale effect on hover */
+}
+
+.room-item img {
+    border-radius: 6px; /* Slightly rounded corners for images */
+    width: 100%; /* Make images responsive */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Crop images to fit */
+}
+
+.p-buildings {
+    color: #d4d4d4; /* Text color for room descriptions */
+    font-size: 14px; /* Font size for better readability */
+}
+
+.description{
+    color: #002b36;
+}
+
+/* Style the form */
+#search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between the input and button */
+    margin: 20px auto; /* Center the form and add some spacing */
+    width: fit-content; /* Adjust to content size */
+}
+
+/* Style the input field */
+#search-form input[type="text"] {
+    border: 1px solid #2c2c2c; /* Border color */
+    background-color: #2c2c2c; /* Background color */
+    color: #ffffff; /* Text color */
+    padding: 10px 20px; /* Add padding */
+    border-radius: 50px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    width: 300px; /* Set the width */
+    outline: none; /* Remove outline on focus */
+    transition: all 0.3s ease; /* Smooth transition for hover/focus */
+}
+
+/* Add hover and focus effect for input */
+#search-form input[type="text"]:hover,
+#search-form input[type="text"]:focus {
+    background-color: #3a3a3a; /* Slightly lighter shade on hover/focus */
+    border-color: #555555; /* Adjust border color */
+}
+
+/* Style the submit button */
+#search-form button {
+    border: none; /* Remove border */
+    background-color: #2c2c2c; /* Background color */
+    color: #ffffff; /* Text color */
+    padding: 10px 20px; /* Add padding */
+    border-radius: 50px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Add hover effect for button */
+#search-form button:hover {
+    background-color: #555555; /* Lighter shade on hover */
+    transform: scale(1.05); /* Slightly enlarge button */
+}
+
+
+#search-form input[type="text"]::placeholder {
+    color: #aaaaaa; /* Change this to your desired color */
+    opacity: 1; /* Ensure full visibility */
+}
+
+
+
+
+
+
+
+
+/* Landing Page Styles */
+.landing-container {
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+}
+
+.landing-header {
+    margin-bottom: 60px;
+}
+
+.logo-img {
+    height: 90px;
+    margin-bottom: 20px;
+}
+
+.landing-header h1 {
+    font-size: 3rem;
+    color: #b88917;
+    margin-bottom: 10px;
+}
+
+.landing-header p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn.custom-btn {
+    background-color: #b88917;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn.custom-btn:hover {
+    background-color: #ffd700;
+}
+
+.features, .about, .testimonials {
+    margin: 40px 0;
+}
+
+.features h2, .about h2, .testimonials h2 {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: rgba(0, 43, 54, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+}
+
+.testimonial-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.testimonial {
+    background-color: rgba(0, 43, 54, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.landing-footer {
+    margin-top: 60px;
+    padding: 20px 0;
+    border-radius: 10px;
+}
+
+.landing-footer a {
+    color: #b88917;
+    text-decoration: none;
+}
+
+.landing-footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+

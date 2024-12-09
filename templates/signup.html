@@ -1,0 +1,277 @@
+{% block title %}
+<title>LNU Room Management Sign Up</title>
+{% endblock %}
+
+{% block css %}
+<link rel="icon" type="image/jpg" href="/static/images/systemicon.png">
+<link rel="stylesheet" href="/static/style.css">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Lexend', sans-serif;
+        color: #2c2c2c;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: #fff;
+        overflow-y: scroll;
+    }
+
+    .signup-container {
+        display: flex;
+        max-width: 1100px;
+        width: 90%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background: #fff;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    .signup-form {
+        width: 100%;
+        max-width: 500px;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .signup-form .logo {
+        width: 100px;
+        margin-bottom: 20px;
+    }
+
+    .signup-form h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #2c2c2c;
+    }
+
+    .signup-form .form-group {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .signup-form input,
+    .signup-form select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 2px solid #d4af37;
+        border-radius: 50px;
+        font-size: 1rem;
+    }
+
+    .signup-form .error-message {
+        color: red;
+        font-size: 0.875rem;
+        margin-top: 5px;
+    }
+
+    .signup-form button {
+        background-color: #d4af37;
+        color: #fff;
+        padding: 12px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        width: 100%;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .signup-form button:hover {
+        background-color: #b88917;
+    }
+
+    .signup-form .login-link {
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #2c2c2c;
+    }
+
+    .signup-form .login-link a {
+        color: #d4af37;
+        text-decoration: none;
+    }
+
+    .signup-form .login-link a:hover {
+        color: #b88917;
+    }
+
+    @media (max-width: 768px) {
+        .signup-container {
+            padding: 15px;
+        }
+
+        .signup-form {
+            padding: 20px;
+        }
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+<body>
+    <div class="signup-container">
+        <div class="signup-form">
+            <img src="/static/images/sysicon.png" alt="LNU Room Management System Logo" class="logo">
+            <h1>Sign Up</h1>
+
+            {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+            <div class="container mt-3">
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <form action="/signup" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="middlename">Middle Name</label>
+                    <input type="text" class="form-control" id="middlename" name="middlename" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <input type="text" class="form-control" id="department" name="department" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <select class="form-control" id="title" name="title" required>
+                    <option value="">Select Title</option>
+                    <option value="Prof">Prof</option>
+                    <option value="Asst_Prof">Asst. Prof</option>
+                    <option value="Assoc_Prof">Assoc. Prof</option>
+                    <option value="Lecturer">Lecturer</option>
+                    <option value="Sr_Lecturer">Sr. Lecturer</option>
+                    <option value="Instructor">Instructor</option>
+                    <option value="Teaching_Fellow">Teaching Fellow</option>
+                    <option value="Research_Fellow">Research Fellow</option>
+                    <option value="Dr">Dr.</option>
+                    <option value="PhD_Candidate">Ph.D. Candidate</option>
+                    <option value="PhD">Ph.D</option>
+                    <option value="MA">M.A.</option>
+                    <option value="MS">M.S.</option>
+                    <option value="MSc">M.Sc.</option>
+                    <option value="BA">B.A.</option>
+                    <option value="BSc">B.Sc.</option>
+                    <option value="Engr">Engr.</option>
+                    <option value="CPA">CPA</option>
+                    <option value="RN">RN</option>
+                    <option value="Attorney">Attorney or Esq</option>
+                    <option value="Rev">Rev.</option>
+                    <option value="Emeritus">Emeritus</option>
+                    <option value="Visiting_Professor">Visiting Professor</option>
+                    <option value="Honorary_Professor">Honorary Professor</option>
+                    <option value="Distinguished_Professor">Distinguished Professor</option>
+                    <option value="Clinical_Professor">Clinical Professor</option>
+                </select>
+
+                <div class="form-group">
+                    <label for="officehours">Office Hours [ex: Monday and Wednesday: 2:00 PM - 4:00 PM]</label>
+                    <input type="text" class="form-control" id="officehours" name="officehours" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact Number</label>
+                    <input type="text" class="form-control" id="contact" name="contact" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" name="age" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" class="form-control" id="birthday" name="birthday" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address (State, Province, St./Brgy.)</label>
+                    <input type="text" class="form-control" id="address" name="address" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <br>
+            <p class="login-link">Already a User? <a href="/login">Log in</a></p>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,206 @@
+{% block css %}
+<link rel="icon" type="image/jpg" href="/static/images/systemicon.png">
+<link rel="stylesheet" href="/static/style.css">
+<style>
+    
+</style>
+{% endblock %}
+
+{% block title %}
+<title>
+    LMRS | Bookings
+</title> 
+{% endblock title %}
+
+{% block body %}
+<div class="main-content">
+    <div class="icons-section">
+        <a href="{{ url_for('base') }}">
+            <img src="/static/images/b1.png" alt="" class="arrow-icon">
+        </a>
+        
+            <p class="fillform"><strong>Fill Form</strong></p>
+    
+        <img src="/static/images/b2.png" alt="" class="booking-icon">
+    </div>
+
+    <div class="container mt-3">
+        <div class="container-border">
+            <div class="form-container">
+                {% with messages=get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form action="/bookings" method="post" class="p-4 rounded booking-form" aria-label="Booking form">
+                    <div class="container-booking-1">
+                        <div class="form-group">
+                            <label for="full_name">Full Name</label>
+                            <input type="text" class="form-control" id="full_name" 
+                                   value="Prof. {{ current_user.title }} {{ current_user.first_name|capitalize }} {{ current_user.middle_name|first }}. {{ current_user.last_name|capitalize }}"
+                                   name="full_name" required readonly aria-describedby="full_nameHelp">
+                        </div>
+
+                        <input type="hidden" name="instructor_id" value="{{ current_user.id }}">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="course_code" name="course_code" 
+                                   placeholder="Course Code (e.g., CS101)" required>
+                        </div>
+
+                        <!-- Course Title -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="course_title" name="course_title" 
+                                   placeholder="Course Title (e.g., Introduction to Programming)" required>
+                        </div>
+
+                        <!-- Section (Class Code) -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="class_code" name="class_code" 
+                                   placeholder="Class Code (e.g., IT-101-A)" required>
+                        </div>
+
+                        <!-- Room -->
+                        <div class="form-group">
+                            <select class="form-control" id="room" name="room" required>
+                                <option value="" disabled selected>Room</option>
+                                <option value="COMLAB1">COMLAB1</option>
+                                <option value="COMLAB2">COMLAB2</option>
+                                <option value="COMLAB3">COMLAB3</option>
+                            </select>
+                        </div>
+
+                        <!-- Day -->
+                        <div class="form-group">
+                            <select class="form-control" id="day" name="day" required>
+                                <option value="" disabled selected>Day</option>
+                                <option value="monday">Monday</option>
+                                <option value="tuesday">Tuesday</option>
+                                <option value="wednesday">Wednesday</option>
+                                <option value="thursday">Thursday</option>
+                                <option value="friday">Friday</option>
+                                <option value="saturday">Saturday</option>
+                                <option value="sunday">Sunday</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <h4>Start Time</h4>
+                        <input type="time" class="form-control" name="start_time" required>
+                        </div>
+                            
+                                                    <!-- End Time -->
+                        <div class="form-group">
+                            <h4>End Time</h4>
+                        <input type="time" class="form-control" name="end_time" required>
+                        </div>
+                                                    <!-- Semester Start -->
+                        <div class="form-group">
+                            <h4>Start Date</h4>
+                            <input type="date" class="form-control" name="semester_start" required>
+                        </div>
+                            
+                                                    <!-- Semester End -->
+                        <div class="form-group">
+                            <h4>End Date</h4>
+                            <input type="date" class="form-control" name="semester_end" required>
+                        </div>
+        
+                        <div class="form-group">
+                            <h4>Class Type</h4>
+                            <select class="form-control" id="class_type" name="class_type" required>
+                                <option value="" disabled selected>Class Type</option>
+                                <option value="lecture">Lecture</option>
+                                <option value="laboratory">Laboratory</option>
+                            </select>
+                        </div>
+        
+                                                    <!-- Terms and Conditions -->
+                        <div class="note">
+                            <input type="checkbox" id="terms" required>
+                            <label for="note">NOTE: This booking will only last six months. See <a href="/terms">terms and conditions</a></label>
+                        </div>
+                                                    
+                        <button type="submit" class="btn custom-btn btn-block">Confirm Booking</button>
+                   
+                    </div>
+
+                        
+                </form>
+            </div>
+            
+        </div>
+    </div>   
+</div>
+<footer>
+    <p>&copy; 2024 LNU Room Management. All rights reserved.</p>
+</footer>   
+        
+
+
+<script>
+    // Add a check to ensure the room is available before submitting the booking
+    document.querySelector('form').addEventListener('submit', async function (event) {
+        const room = document.getElementById('room').value;
+        const day = new Date(document.getElementById('date').value).toLocaleString('en-us', { weekday: 'long' });
+        const time = document.getElementById('time').value;
+        
+        // Prevent form submission until availability is checked
+        event.preventDefault();
+        
+        try {
+            // Check room availability
+            const response = await fetch('/check_availability', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ room, day, time })
+            });
+
+            const data = await response.json();
+
+            if (!data.isAvailable) {
+                alert('The selected room is already booked for the chosen time. Please select a different time or room.');
+            } else {
+                // If room is available, submit the form
+                event.target.submit();
+            }
+        } catch (error) {
+            console.error('Error checking room availability:', error);
+            alert('An error occurred while checking availability. Please try again.');
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get today's date in YYYY-MM-DD format
+        const today = new Date().toISOString().split('T')[0];
+        
+        // Set the min date attribute of the date input field to today's date
+        document.querySelector('input[name="date"]').setAttribute('min', today);
+
+        // Check if the time selected is in the past compared to the current time
+        const timeInput = document.querySelector('input[name="time"]');
+        timeInput.addEventListener('input', function() {
+            const selectedDate = document.querySelector('input[name="date"]').value;
+            
+            if (selectedDate === today) {
+                const currentTime = new Date().toISOString().slice(11, 16); // Current time in HH:mm format
+                if (timeInput.value < currentTime) {
+                    alert('You cannot select a past time!');
+                    timeInput.setCustomValidity('The time is in the past!');
+                } else {
+                    timeInput.setCustomValidity('');
+                }
+            }
+        });
+    });
+</script>
+{% endblock body %}
